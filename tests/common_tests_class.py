@@ -1,5 +1,4 @@
 import pytest
-
 from tests.utils import int_lists_gen
 
 
@@ -7,9 +6,9 @@ class CommonTestsClass(object):
 
     sort_function = sorted
 
-    def test_sort_100_random_int_lists(self):
-        for test_list in int_lists_gen(n=100):
-            assert self.sort_function(test_list) == sorted(test_list)
+    @pytest.mark.parametrize('int_list', list(int_lists_gen(n=100)))
+    def test_int_list(self, int_list):
+        assert self.sort_function(int_list) == sorted(int_list)
 
     def test_pass_not_list(self):
         with pytest.raises(ValueError):
