@@ -1,24 +1,15 @@
 from bin_search_tree_sort import *
 import random
 import pytest
-from tests.utils import int_lists_gen
+
+from tests.common_tests_class import CommonTestsClass
 
 
-class TestBinTreeSort(object):
+class TestBinTreeSort(CommonTestsClass):
     """Tests bin_search_tree_sort function.
     """
 
-    def test_sort_100_random_int_lists(self):
-        for test_list in int_lists_gen(n=100):
-            assert bin_tree_sort(test_list) == sorted(test_list)
-
-    def test_pass_not_list(self):
-        with pytest.raises(ValueError):
-            bin_tree_sort((1, 5, 2))
-
-    def test_float_list(self):
-        list_to_sort = [3.14, 521.245, 9.32, 1234532.234, 32.532, 543.1234]
-        assert bin_tree_sort(list_to_sort) == sorted(list_to_sort)
+    sort_function = staticmethod(bin_tree_sort)
 
 
 class TestBinTree(object):
