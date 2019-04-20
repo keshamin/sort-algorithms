@@ -1,11 +1,11 @@
-from bin_tree_sort import *
+from bin_search_tree_sort import *
 import random
 import time
 import pytest
 
 
 class TestBinTreeSort(object):
-    """Tests bin_tree_sort function.
+    """Tests bin_search_tree_sort function.
     """
     @staticmethod
     def int_lists_gen(n=100):
@@ -39,13 +39,13 @@ class TestBinTree(object):
                                                                         (5, 2, 'left'),
                                                                         (100, 100, 'right')])
     def test_add_child(self, root_value, child_value, expected_side):
-        bt = BinTree(value=root_value)
+        bt = BinSearchTree(value=root_value)
         bt.add_child(child_value)
-        assert isinstance(getattr(bt, expected_side), BinTree)
+        assert isinstance(getattr(bt, expected_side), BinSearchTree)
         assert getattr(bt, expected_side).value == child_value
 
     def test_add_children(self):
-        bt = BinTree(value=10)
+        bt = BinSearchTree(value=10)
         bt.add_children(*(100, 53, 2, 87, 65, 39, 1))
         assert bt.left.left.value == 1
         assert bt.left.value == 2
@@ -56,12 +56,12 @@ class TestBinTree(object):
         assert bt.right.value == 100
 
     def test_build_tree_from_list(self):
-        bt = BinTree.build_tree_from_list([66, 34, 55, 76, 67, 26, 11, 7, 88, 94])
+        bt = BinSearchTree.build_tree_from_list([66, 34, 55, 76, 67, 26, 11, 7, 88, 94])
         assert bt.left.value == 34
         assert bt.left.left.left.left.value == 7
         assert bt.right.right.right.value == 94
 
     def test_get_sorted_list(self):
         int_list = [random.randint(1, 100) for _ in range(20)]
-        bt = BinTree.build_tree_from_list(values_list=int_list)
+        bt = BinSearchTree.build_tree_from_list(values_list=int_list)
         assert sorted(int_list) == bt.get_sorted_list()
