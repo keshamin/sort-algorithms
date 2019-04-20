@@ -1,4 +1,10 @@
+from collections import Iterable
+
+
 def bubble_sort(iterable):
+
+    if not isinstance(iterable, Iterable):
+        raise ValueError('Cannot sort non-iterable object!')
 
     list_to_sort = list(iterable)
 

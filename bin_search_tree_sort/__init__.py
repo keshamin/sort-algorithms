@@ -1,8 +1,9 @@
 from bin_search_tree_sort.bin_search_tree import BinSearchTree
+from collections import Iterable
 
 
-def bin_tree_sort(list_to_sort):
-    if not isinstance(list_to_sort, list):
-        raise ValueError('This function takes only lists to sort!')
+def bin_tree_sort(iterable):
+    if not isinstance(iterable, Iterable):
+        raise ValueError('Cannot sort non-iterable object!')
 
-    return BinSearchTree.build_tree_from_list(values_list=list_to_sort).get_sorted_list()
+    return BinSearchTree.build_tree_from_list(values_list=iterable).get_sorted_list()
