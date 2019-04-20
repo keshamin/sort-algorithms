@@ -1,9 +1,8 @@
-from collections import Iterable
+from common_sort_utils import iterables_only
 
 
+@iterables_only
 def insert_sort(iterable):
-    if not isinstance(iterable, Iterable):
-        raise ValueError('Cannot sort non-iterable object!')
 
     list_to_sort = list(iterable)
 
