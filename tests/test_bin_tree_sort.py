@@ -1,26 +1,15 @@
 from bin_search_tree_sort import *
 import random
-import time
 import pytest
+from tests.utils import int_lists_gen
 
 
 class TestBinTreeSort(object):
     """Tests bin_search_tree_sort function.
     """
-    @staticmethod
-    def int_lists_gen(n=100):
-        """
-        Generates lists of random ints with length up to 1000
-        :param int n: number of lists to generate
-        :return: list of ints
-        """
-        for i in range(n):
-            random.seed(time.time())
-            list_len = random.randint(0, 1000)
-            yield [random.randint(-10 ** 6, 10 ** 6) for _ in range(list_len)]
 
     def test_sort_100_random_int_lists(self):
-        for test_list in self.int_lists_gen(n=100):
+        for test_list in int_lists_gen(n=100):
             assert bin_tree_sort(test_list) == sorted(test_list)
 
     def test_pass_not_list(self):
